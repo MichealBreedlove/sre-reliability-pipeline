@@ -1,0 +1,61 @@
+{
+  "version": "1.0",
+  "description": "SLO definitions for Aegis homelab cluster (4-node Proxmox)",
+  "slos": [
+    {
+      "id": "proxmox-api-availability",
+      "name": "Proxmox API Availability",
+      "service": "proxmox-api",
+      "sli_type": "availability",
+      "target": 0.999,
+      "windows": ["1h", "6h", "24h", "7d", "30d"],
+      "description": "Proxmox REST API (port 8006) responds to requests successfully across all nodes"
+    },
+    {
+      "id": "grafana-dashboard-latency",
+      "name": "Grafana Dashboard Load Latency",
+      "service": "grafana",
+      "sli_type": "latency",
+      "target": 500.0,
+      "threshold_ms": 500.0,
+      "windows": ["1h", "6h", "24h", "7d", "30d"],
+      "description": "Grafana dashboard p95 load time remains under 500ms"
+    },
+    {
+      "id": "prometheus-scrape-success",
+      "name": "Prometheus Scrape Success Rate",
+      "service": "prometheus",
+      "sli_type": "availability",
+      "target": 0.995,
+      "windows": ["1h", "6h", "24h", "7d", "30d"],
+      "description": "Prometheus successfully scrapes all registered target endpoints"
+    },
+    {
+      "id": "nfs-mount-availability",
+      "name": "NFS Mount Availability",
+      "service": "nfs",
+      "sli_type": "availability",
+      "target": 0.999,
+      "windows": ["1h", "6h", "24h", "7d", "30d"],
+      "description": "NFS mounts on TrueNAS remain accessible across all cluster nodes"
+    },
+    {
+      "id": "node-exporter-error-rate",
+      "name": "Node Exporter Collection Error Rate",
+      "service": "node-exporter",
+      "sli_type": "error_rate",
+      "target": 0.99,
+      "windows": ["1h", "6h", "24h", "7d", "30d"],
+      "description": "Node exporter metric collection error rate stays below 1% on all nodes"
+    },
+    {
+      "id": "vm-start-success",
+      "name": "VM Start Success Rate",
+      "service": "vm-lifecycle",
+      "sli_type": "availability",
+      "target": 0.99,
+      "windows": ["1h", "6h", "24h", "7d", "30d"],
+      "description": "VM start operations via Proxmox API complete successfully"
+    }
+  ]
+}
